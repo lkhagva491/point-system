@@ -1,0 +1,35 @@
+{
+  "name": "point-system-monorepo",
+  "version": "1.0.0",
+  "description": "Point System Monorepo with NestJS backend and Next.js frontends",
+  "private": true,
+  "workspaces": [
+    "packages/shared",
+    "apps/backend",
+    "apps/admin",
+    "apps/user"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:admin\" \"npm run dev:user\"",
+    "dev:backend": "npm run dev --workspace=@point-system/backend",
+    "dev:admin": "npm run dev --workspace=@point-system/admin",
+    "dev:user": "npm run dev --workspace=@point-system/user",
+    "build": "npm run build --workspaces",
+    "build:backend": "npm run build --workspace=@point-system/backend",
+    "build:admin": "npm run build --workspace=@point-system/admin",
+    "build:user": "npm run build --workspace=@point-system/user",
+    "lint": "npm run lint --workspaces",
+    "test": "npm run test --workspaces",
+    "clean": "npm run clean --workspaces && rimraf node_modules"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "concurrently": "^8.2.2",
+    "rimraf": "^5.0.5",
+    "typescript": "^5.3.0"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  }
+}
