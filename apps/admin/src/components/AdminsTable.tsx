@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { User } from '@point-system/shared'
+import { Button, Modal, Input, Badge } from '@point-system/ui'
 import { api } from '@/lib/api'
 import { useLanguage } from '@/contexts/LanguageContext'
 import { useTranslation } from '@/lib/i18n'
@@ -212,12 +213,12 @@ export function AdminsTable() {
     <div className="card">
       <div className="flex justify-between items-center mb-4">
         <h3 className="text-lg font-medium text-gray-900">{t('dashboard.admins')}</h3>
-        <button
+        <Button
           onClick={() => setShowCreateForm(true)}
-          className="px-4 py-2 bg-primary-600 text-white rounded-md hover:bg-primary-700"
+          variant="primary"
         >
           {t('dashboard.addNewAdmin')}
-        </button>
+        </Button>
       </div>
       <div className="overflow-x-auto">
         <table className="min-w-full divide-y divide-gray-200">
@@ -287,37 +288,31 @@ export function AdminsTable() {
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
                   <div className="flex space-x-2">
-                    <button
+                    <Button
                       onClick={() => handleEdit(admin)}
-                      className="text-primary-600 hover:text-primary-900"
+                      variant="outline"
+                      size="sm"
                     >
                       {t('dashboard.edit')}
-                    </button>
-                    <button
+                    </Button>
+                    <Button
                       onClick={() => handleToggleActive(admin._id, admin.isActive)}
-                      className={`text-sm ${
-                        admin.isActive 
-                          ? 'text-orange-600 hover:text-orange-900'
-                          : 'text-green-600 hover:text-green-900'
-                      }`}
+                      variant={admin.isActive ? "secondary" : "primary"}
+                      size="sm"
                     >
                       {admin.isActive ? t('dashboard.deactivate') : t('dashboard.activate')}
-                    </button>
-                    <button
+                    </Button>
+                    <Button
                       onClick={() => handleDelete(admin._id)}
-                      className={`${
-                        (currentUser && currentUser._id === admin._id) || 
-                        (admins.filter(a => a.isActive !== false).length <= 1)
-                          ? 'text-gray-400 cursor-not-allowed'
-                          : 'text-red-600 hover:text-red-900'
-                      }`}
+                      variant="danger"
+                      size="sm"
                       disabled={
                         (currentUser && currentUser._id === admin._id) || 
                         (admins.filter(a => a.isActive !== false).length <= 1)
                       }
                     >
                       {t('dashboard.delete')}
-                    </button>
+                    </Button>
                   </div>
                 </td>
               </tr>

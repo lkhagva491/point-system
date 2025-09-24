@@ -13,6 +13,7 @@
   "dependencies": {
     "@heroicons/react": "^2.2.0",
     "@point-system/shared": "file:../../packages/shared",
+    "@point-system/ui": "file:../../packages/ui",
     "axios": "^1.6.2",
     "clsx": "^2.0.0",
     "i18next": "^25.5.2",

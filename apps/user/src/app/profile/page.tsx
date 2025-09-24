@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { User, UpdateUserDto } from '@point-system/shared'
+import { Button, Input } from '@point-system/ui'
 import { api } from '@/lib/api'
 import { useLanguage } from '@/contexts/LanguageContext'
 import { useTranslation } from '@/lib/i18n'
@@ -147,30 +148,22 @@ export default function ProfilePage() {
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
-                <label htmlFor="firstName" className="label">
-                  {t('auth.firstName')}
-                </label>
-                <input
-                  id="firstName"
+                <Input
+                  label={t('auth.firstName')}
                   name="firstName"
                   type="text"
                   required
-                  className="input"
                   value={formData.firstName}
                   onChange={handleChange}
                 />
               </div>
               
               <div>
-                <label htmlFor="lastName" className="label">
-                  {t('auth.lastName')}
-                </label>
-                <input
-                  id="lastName"
+                <Input
+                  label={t('auth.lastName')}
                   name="lastName"
                   type="text"
                   required
-                  className="input"
                   value={formData.lastName}
                   onChange={handleChange}
                 />
@@ -178,65 +171,54 @@ export default function ProfilePage() {
             </div>
 
             <div>
-              <label htmlFor="username" className="label">
-                {t('auth.username')}
-              </label>
-              <input
-                id="username"
+              <Input
+                label={t('auth.username')}
                 name="username"
                 type="text"
                 required
-                className="input"
                 value={formData.username}
                 onChange={handleChange}
               />
             </div>
 
             <div>
-              <label htmlFor="email" className="label">
-                {t('auth.email')}
-              </label>
-              <input
-                id="email"
+              <Input
+                label={t('auth.email')}
                 name="email"
                 type="email"
                 required
-                className="input"
                 value={formData.email}
                 onChange={handleChange}
               />
             </div>
 
             <div>
-              <label htmlFor="password" className="label">
-                {t('auth.password')} (Optional)
-              </label>
-              <input
-                id="password"
+              <Input
+                label={`${t('auth.password')} (${t('common.optional')})`}
                 name="password"
                 type="password"
-                className="input"
                 value={formData.password}
                 onChange={handleChange}
-                placeholder="Enter new password if you want to change it"
+                placeholder={t('profile.enterNewPassword')}
               />
             </div>
 
             <div className="flex justify-end space-x-4">
-              <button
+              <Button
                 type="button"
                 onClick={() => router.push('/dashboard')}
-                className="btn btn-outline"
+                variant="outline"
               >
                 {t('dashboard.cancel')}
-              </button>
-              <button
+              </Button>
+              <Button
                 type="submit"
                 disabled={isLoading}
-                className="btn btn-primary"
+                loading={isLoading}
+                variant="primary"
               >
-                {isLoading ? t('profile.updating') : t('profile.updateProfile')}
-              </button>
+                {t('profile.updateProfile')}
+              </Button>
             </div>
           </form>
         </div>

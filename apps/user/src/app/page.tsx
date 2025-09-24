@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { LoginDto, CreateUserDto } from '@point-system/shared'
+import { Button, Input } from '@point-system/ui'
 import { api } from '@/lib/api'
 import { useLanguage } from '@/contexts/LanguageContext'
 import { useTranslation } from '@/lib/i18n'
@@ -101,43 +102,31 @@ export default function HomePage() {
               {!isLogin && (
                 <>
                   <div>
-                    <label htmlFor="firstName" className="label">
-                      {t('auth.firstName')}
-                    </label>
-                    <input
-                      id="firstName"
+                    <Input
+                      label={t('auth.firstName')}
                       name="firstName"
                       type="text"
                       required={!isLogin}
-                      className="input"
                       value={formData.firstName || ''}
                       onChange={handleChange}
                     />
                   </div>
                   <div>
-                    <label htmlFor="lastName" className="label">
-                      {t('auth.lastName')}
-                    </label>
-                    <input
-                      id="lastName"
+                    <Input
+                      label={t('auth.lastName')}
                       name="lastName"
                       type="text"
                       required={!isLogin}
-                      className="input"
                       value={formData.lastName || ''}
                       onChange={handleChange}
                     />
                   </div>
                   <div>
-                    <label htmlFor="username" className="label">
-                      {t('auth.username')}
-                    </label>
-                    <input
-                      id="username"
+                    <Input
+                      label={t('auth.username')}
                       name="username"
                       type="text"
                       required={!isLogin}
-                      className="input"
                       value={formData.username || ''}
                       onChange={handleChange}
                     />
@@ -146,30 +135,22 @@ export default function HomePage() {
               )}
               
               <div>
-                <label htmlFor="email" className="label">
-                  {t('auth.email')}
-                </label>
-                <input
-                  id="email"
+                <Input
+                  label={t('auth.email')}
                   name="email"
                   type="email"
                   required
-                  className="input"
                   value={formData.email}
                   onChange={handleChange}
                 />
               </div>
               
               <div>
-                <label htmlFor="password" className="label">
-                  {t('auth.password')}
-                </label>
-                <input
-                  id="password"
+                <Input
+                  label={t('auth.password')}
                   name="password"
                   type="password"
                   required
-                  className="input"
                   value={formData.password}
                   onChange={handleChange}
                 />
@@ -181,13 +162,15 @@ export default function HomePage() {
                 </div>
               )}
 
-              <button
+              <Button
                 type="submit"
                 disabled={isLoading}
-                className="w-full btn btn-primary"
+                loading={isLoading}
+                variant="primary"
+                className="w-full"
               >
-                {isLoading ? t('auth.pleaseWait') : (isLogin ? t('auth.signIn') : t('auth.createAccount'))}
-              </button>
+                {isLogin ? t('auth.signIn') : t('auth.createAccount')}
+              </Button>
             </form>
           </div>
         </div>

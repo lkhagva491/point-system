@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { LoginDto } from '@point-system/shared'
+import { Button, Input } from '@point-system/ui'
 import { api } from '@/lib/api'
 import { useLanguage } from '@/contexts/LanguageContext'
 import { useTranslation } from '@/lib/i18n'
@@ -68,56 +69,46 @@ export default function LoginPage() {
             {t('auth.signInAdminAccount')}
           </p>
         </div>
-        <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
-          <div className="rounded-md shadow-sm -space-y-px">
-            <div>
-              <label htmlFor="email" className="sr-only">
-                Email address
-              </label>
-              <input
-                id="email"
-                name="email"
-                type="email"
-                autoComplete="email"
-                required
-                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-primary-500 focus:border-primary-500 focus:z-10 sm:text-sm"
-                placeholder={t('auth.emailAddress')}
-                value={formData.email}
-                onChange={handleChange}
-              />
-            </div>
-            <div>
-              <label htmlFor="password" className="sr-only">
-                Password
-              </label>
-              <input
-                id="password"
-                name="password"
-                type="password"
-                autoComplete="current-password"
-                required
-                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-primary-500 focus:border-primary-500 focus:z-10 sm:text-sm"
-                placeholder={t('auth.password')}
-                value={formData.password}
-                onChange={handleChange}
-              />
-            </div>
-          </div>
+            <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
+              <div className="space-y-4">
+                <Input
+                  label={t('auth.emailAddress')}
+                  name="email"
+                  type="email"
+                  autoComplete="email"
+                  required
+                  placeholder={t('auth.emailAddress')}
+                  value={formData.email}
+                  onChange={handleChange}
+                />
+                <Input
+                  label={t('auth.password')}
+                  name="password"
+                  type="password"
+                  autoComplete="current-password"
+                  required
+                  placeholder={t('auth.password')}
+                  value={formData.password}
+                  onChange={handleChange}
+                />
+              </div>
 
-          {error && (
-            <div className="text-red-600 text-sm text-center">{error}</div>
-          )}
+              {error && (
+                <div className="text-red-600 text-sm text-center">{error}</div>
+              )}
 
-          <div>
-            <button
-              type="submit"
-              disabled={isLoading}
-              className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 disabled:opacity-50"
-            >
-              {isLoading ? t('auth.signingIn') : t('auth.signIn')}
-            </button>
-          </div>
-        </form>
+              <div>
+                <Button
+                  type="submit"
+                  disabled={isLoading}
+                  loading={isLoading}
+                  variant="primary"
+                  className="w-full"
+                >
+                  {t('auth.signIn')}
+                </Button>
+              </div>
+            </form>
       </div>
     </div>
   )

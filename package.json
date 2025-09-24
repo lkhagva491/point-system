@@ -5,6 +5,7 @@
   "private": true,
   "workspaces": [
     "packages/shared",
+    "packages/ui",
     "apps/backend",
     "apps/admin",
     "apps/user"
