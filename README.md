@@ -150,6 +150,71 @@ Once the backend is running, visit `http://localhost:3001/api/docs` for interact
 - View system statistics
 - Language switching (English/Mongolian)
 
+## Deployment
+
+### Frontend (Vercel)
+
+1. **Install Vercel CLI:**
+```bash
+npm i -g vercel
+```
+
+2. **Login to Vercel:**
+```bash
+vercel login
+```
+
+3. **Deploy:**
+```bash
+# Deploy user app
+cd apps/user
+vercel
+
+# Deploy admin app
+cd apps/admin
+vercel
+```
+
+4. **Environment Variables (Vercel Dashboard):**
+```
+NEXT_PUBLIC_API_URL=https://your-backend-url.herokuapp.com
+NEXT_PUBLIC_APP_NAME=Point System
+```
+
+### Backend (Heroku)
+
+1. **Install Heroku CLI:**
+```bash
+# Download from https://devcenter.heroku.com/articles/heroku-cli
+```
+
+2. **Login to Heroku:**
+```bash
+heroku login
+```
+
+3. **Create Heroku App:**
+```bash
+heroku create point-system-backend
+```
+
+4. **Set Environment Variables:**
+```bash
+heroku config:set MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/point
+heroku config:set JWT_SECRET=your-jwt-secret
+```
+
+5. **Deploy:**
+```bash
+git push heroku main
+```
+
+### Production URLs
+
+- **Backend API**: https://point-system-backend.herokuapp.com
+- **Admin Dashboard**: https://point-system-admin.vercel.app
+- **User Application**: https://point-system-user.vercel.app
+
 ## Contributing
 
 1. Fork the repository
