@@ -5,6 +5,7 @@
   "main": "dist/main.js",
   "scripts": {
     "start": "node dist/main.js",
+    "dev": "tsc && node dist/main.js",
     "build": "tsc",
     "postinstall": "npm run build"
   },
