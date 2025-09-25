@@ -212,6 +212,8 @@ NEXT_PUBLIC_APP_NAME=Point System
 # Root Directory: (leave empty)
 ```
 
+**Note:** The start command `npm start` will automatically run `cd apps/backend && npm start` which starts the backend server.
+
 4. **Set Environment Variables:**
 ```bash
 MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/point
