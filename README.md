@@ -1,274 +1,223 @@
-# Point System
+# Point System Monorepo
 
-A comprehensive point management system built with NestJS backend and Next.js frontends.
+A modern full-stack web application built with NestJS, NextJS, and MongoDB.
 
-## Features
+## 🚀 Features
 
-- **User Management**: Register, login, and profile management
-- **Admin Dashboard**: Complete admin panel for managing users, admins, transactions, and rewards
-- **Point System**: Earn and redeem points for rewards
-- **Transaction Management**: Deposit and withdrawal requests with admin approval
-- **Rewards System**: Create and manage rewards for point redemption
-- **Internationalization**: Support for English and Mongolian languages
-- **Toast Notifications**: Modern notification system
-- **Responsive Design**: Mobile-friendly interface
+- **Backend**: NestJS with MongoDB integration
+- **Admin Panel**: NextJS admin interface
+- **User Interface**: NextJS user-facing application
+- **Authentication**: JWT-based authentication with role-based access
+- **Database**: MongoDB Atlas (online)
+- **UI**: Tailwind CSS with responsive design
+- **TypeScript**: Full TypeScript support across all applications
+- **Monorepo**: Workspace-based monorepo structure
+- **Internationalization**: Multi-language support (English/Mongolian)
+- **Shared Components**: Reusable UI component library
 
-## Tech Stack
-
-### Backend
-- **NestJS**: Node.js framework
-- **MongoDB**: Database with Mongoose ODM
-- **JWT**: Authentication
-- **Swagger**: API documentation
-- **bcrypt**: Password hashing
-
-### Frontend
-- **Next.js 14**: React framework
-- **TypeScript**: Type safety
-- **Tailwind CSS**: Styling
-- **Heroicons**: Icons
-- **Axios**: HTTP client
-
-## Project Structure
+## 📁 Project Structure
 
 ```
-point-system/
 ├── apps/
 │   ├── backend/          # NestJS API server
-│   ├── admin/            # Admin dashboard (Next.js)
-│   └── user/             # User application (Next.js)
+│   ├── admin/            # NextJS admin panel
+│   └── user/             # NextJS user interface
 ├── packages/
-│   └── shared/           # Shared types and DTOs
-└── package.json          # Root package.json
+│   ├── shared/           # Shared utilities and types
+│   └── ui/               # Shared UI components
+└── package.json          # Root package.json with workspace config
 ```
 
-## Getting Started
+## 🛠️ Tech Stack
+
+### Backend
+- **NestJS** - Progressive Node.js framework
+- **MongoDB** - NoSQL database with Mongoose ODM
+- **JWT** - JSON Web Tokens for authentication
+- **Swagger** - API documentation
+- **TypeScript** - Type-safe JavaScript
+- **bcryptjs** - Password hashing
+
+### Frontend
+- **NextJS** - React framework for production
+- **React** - UI library
+- **Tailwind CSS** - Utility-first CSS framework
+- **React Query** - Data fetching and caching
+- **TypeScript** - Type-safe JavaScript
+- **i18next** - Internationalization
+- **Heroicons** - Icon library
+
+### Development
+- **Monorepo** - Workspace-based project structure
+- **Concurrently** - Run multiple commands simultaneously
+- **ESLint** - Code linting
+- **Prettier** - Code formatting
+
+## 🚀 Quick Start
 
 ### Prerequisites
-- Node.js 18+
+- Node.js >= 18.0.0
+- npm >= 9.0.0
 - MongoDB Atlas account
-- npm or yarn
 
 ### Installation
 
-1. Clone the repository:
+1. **Clone and install dependencies:**
+   ```bash
+   git clone https://github.com/lkhagva491/point-system.git
+   cd point-system
+   npm install
+   ```
+
+2. **Set up environment variables:**
+   ```bash
+   # Copy environment files
+   cp apps/backend/env.example apps/backend/.env
+   ```
+
+3. **Configure MongoDB:**
+   - Create a MongoDB Atlas account
+   - Create a new cluster
+   - Get your connection string
+   - Update `apps/backend/.env` with your MongoDB URI
+
+4. **Start development servers:**
+   ```bash
+   npm run dev
+   ```
+
+This will start all three applications:
+- **Backend API**: http://localhost:3001
+- **Admin Web**: http://localhost:3002
+- **User Web**: http://localhost:3004
+
+## 📚 API Documentation
+
+Once the backend is running, access the Swagger API documentation at:
+**http://localhost:3001/api/docs**
+
+## 🔐 Authentication
+
+The application uses JWT-based authentication with role-based access control:
+
+- **Admin Role**: Full access to admin panel and user management
+- **User Role**: Access to user dashboard and basic features
+
+### Creating an Admin User
+
 ```bash
-git clone https://github.com/lkhagva491/point-system.git
-cd point-system
+curl -X POST http://localhost:3001/auth/register \
+  -H "Content-Type: application/json" \
+  -d '{
+    "firstName": "Admin",
+    "lastName": "User",
+    "username": "admin",
+    "email": "admin@example.com",
+    "password": "password123",
+    "role": "admin"
+  }'
 ```
 
-2. Install dependencies:
-```bash
-npm install
-```
+## 🎯 Available Scripts
 
-3. Set up environment variables:
-```bash
-# Copy .env.example to .env in apps/backend/
-cp apps/backend/.env.example apps/backend/.env
-```
-
-4. Update the `.env` file with your MongoDB Atlas connection string:
-```env
-MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/point?retryWrites=true&w=majority
-JWT_SECRET=your-jwt-secret
-```
-
-5. Build the project:
-```bash
-npm run build
-```
-
-6. Start the development servers:
-```bash
-npm run dev
-```
-
-## Available Scripts
-
+### Root Level
 - `npm run dev` - Start all applications in development mode
-- `npm run build` - Build all applications for production
-- `npm run dev:backend` - Start only the backend server
-- `npm run dev:admin` - Start only the admin dashboard
-- `npm run dev:user` - Start only the user application
+- `npm run build` - Build all applications
+- `npm run start` - Start backend in production mode
+- `npm run start:admin` - Start admin app in production mode
+- `npm run start:user` - Start user app in production mode
+- `npm run lint` - Lint all applications
+- `npm run test` - Run tests for all applications
 
-## API Endpoints
+### Individual Applications
+- `npm run dev:backend` - Start only backend
+- `npm run dev:admin` - Start only admin web
+- `npm run dev:user` - Start only user web
+- `npm run build:backend` - Build only backend
+- `npm run build:admin` - Build only admin web
+- `npm run build:user` - Build only user web
 
-### Authentication
-- `POST /auth/login` - User login
-- `POST /auth/register` - User registration
+## 🌐 Environment Variables
 
-### Users
-- `GET /users` - Get all users
-- `GET /users/:id` - Get user by ID
-- `PATCH /users/:id` - Update user
-- `DELETE /users/:id` - Delete user
-
-### Admins
-- `GET /admins` - Get all admins
-- `POST /admins` - Create new admin
-- `PATCH /admins/:id` - Update admin
-- `DELETE /admins/:id` - Delete admin
-
-### Points
-- `GET /points/user/:userId` - Get user points
-- `POST /points/transaction-request` - Request transaction
-
-### Transactions
-- `GET /transactions` - Get all transactions
-- `PATCH /transactions/:id/status` - Update transaction status
-
-### Rewards
-- `GET /rewards` - Get all rewards
-- `POST /rewards` - Create reward
-- `POST /rewards/redeem` - Redeem reward
-
-## API Documentation
-
-Once the backend is running, visit `http://localhost:3001/api/docs` for interactive API documentation.
-
-## Applications
-
-- **Backend**: http://localhost:3001
-- **Admin Dashboard**: http://localhost:3002
-- **User Application**: http://localhost:3004
-
-## Features Overview
-
-### User Features
-- Register and login
-- View point balance and transaction history
-- Request deposits and withdrawals
-- Redeem rewards
-- Edit profile
-- Language switching (English/Mongolian)
-
-### Admin Features
-- Manage users and admins
-- Approve/decline transactions
-- Create and manage rewards
-- View system statistics
-- Language switching (English/Mongolian)
-
-## Deployment
-
-### Frontend (Vercel)
-
-1. **Install Vercel CLI:**
-```bash
-npm i -g vercel
+### Backend (.env)
+```env
+NODE_ENV=development
+PORT=3001
+MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/point-db
+JWT_SECRET=your-super-secret-jwt-key-here
+JWT_EXPIRES_IN=7d
+CORS_ORIGIN=http://localhost:3002,http://localhost:3004
 ```
 
-2. **Login to Vercel:**
-```bash
-vercel login
+### Frontend (Environment Variables)
+```env
+NEXT_PUBLIC_API_URL=http://localhost:3001
+NEXT_PUBLIC_APP_NAME=Point System
 ```
 
-3. **Deploy Admin App:**
-```bash
-# ⭐ Method 1: Direct Commands (RECOMMENDED - Most Reliable)
-# Vercel Dashboard Settings:
-# Root Directory: (leave empty)
-# Build Command: npm install && cd packages/shared && npm run build && cd ../../packages/ui && npm run build && cd ../../apps/admin && npm run build
-# Output Directory: apps/admin/.next  ← IMPORTANT: Must set this!
-# Install Command: npm install
+## 🏗️ Development
 
-# Method 2: Build Script (May have chmod issues)
-# Build Command: chmod +x build-admin.sh && ./build-admin.sh
-# Output Directory: apps/admin/.next
+### Adding New Features
 
-# Method 3: Subdirectory Deploy
-# Root Directory: apps/admin
-# Build Command: npm run build
-# Output Directory: .next
-```
+1. **Backend**: Add new modules in `apps/backend/src/`
+2. **Frontend**: Add new pages/components in respective apps
+3. **Shared**: Add shared utilities in `packages/shared/`
+4. **UI**: Add shared components in `packages/ui/`
 
-4. **Deploy User App:**
-```bash
-# ⭐ Method 1: Direct Commands (RECOMMENDED - Most Reliable)
-# Vercel Dashboard Settings:
-# Root Directory: (leave empty)
-# Build Command: npm install && cd packages/shared && npm run build && cd ../../packages/ui && npm run build && cd ../../apps/user && npm run build
-# Output Directory: apps/user/.next  ← IMPORTANT: Must set this!
-# Install Command: npm install
+### Code Style
 
-# Method 2: Build Script (May have chmod issues)
-# Build Command: chmod +x build-user.sh && ./build-user.sh
-# Output Directory: apps/user/.next
+- Use TypeScript for all new code
+- Follow ESLint and Prettier configurations
+- Use meaningful commit messages
+- Write tests for new features
 
-# Method 3: Subdirectory Deploy
-# Root Directory: apps/user
-# Build Command: npm run build
-# Output Directory: .next
-```
+## 🚀 Deployment
 
-5. **Environment Variables (Vercel Dashboard):**
-```
+### Backend (Render)
+- Deploy to Render.com
+- Set production environment variables
+- Ensure MongoDB Atlas is accessible
+- Build Command: `npm install && npm run build`
+- Start Command: `npm start`
+
+### Environment Variables (Production)
+```env
 NEXT_PUBLIC_API_URL=https://point-system-1oqw.onrender.com
 NEXT_PUBLIC_APP_NAME=Point System
 ```
 
-### Backend (Render - Free Alternative)
+## 🌍 Internationalization
 
-1. **Create Render Account:**
-```bash
-# Visit https://render.com
-# Sign up with GitHub
-```
+The application supports multiple languages:
+- **English** (default)
+- **Mongolian** (Монгол)
 
-2. **Create New Web Service:**
-```bash
-# Connect your GitHub repository
-# Select "Web Service"
-# Choose your repository
-```
+Language switching is available in both admin and user interfaces.
 
-3. **Configure Build Settings:**
-```bash
-# Build Command: npm install && cd packages/shared && npm install && npm run build && cd ../../apps/backend && npm install && npm run build
-# Start Command: npm start
-# Environment: Node
-# Root Directory: (leave empty)
-```
+## 🎨 UI Components
 
-**Alternative Build Command:**
-```bash
-# Build Command: chmod +x build-render.sh && ./build-render.sh
-# Start Command: npm start
-# Environment: Node
-# Root Directory: (leave empty)
-```
+Shared UI components are available in `packages/ui/`:
+- **Button** - Customizable button component
+- **Input** - Form input component
+- **Card** - Content card component
+- **Modal** - Modal dialog component
+- **Badge** - Status badge component
+- **LoadingSpinner** - Loading indicator
 
-**Note:** The start command `npm start` will automatically run `cd apps/backend && npm start` which starts the backend server.
-
-4. **Set Environment Variables:**
-```bash
-MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/point
-JWT_SECRET=your-jwt-secret
-NODE_ENV=production
-```
-
-5. **Deploy:**
-```bash
-# Automatic deployment from GitHub
-# Push to main branch triggers deployment
-```
-
-### Production URLs
-
-- **Backend API**: https://point-system-backend.onrender.com
-- **Admin Dashboard**: https://point-system-admin.vercel.app
-- **User Application**: https://point-system-user.vercel.app
-
-## Contributing
+## 🤝 Contributing
 
 1. Fork the repository
 2. Create a feature branch
 3. Make your changes
-4. Commit your changes
-5. Push to the branch
-6. Create a Pull Request
+4. Add tests if applicable
+5. Submit a pull request
 
-## License
+## 📄 License
 
 This project is licensed under the MIT License.
+
+## 🆘 Support
+
+For support and questions:
+- Check the API documentation at `/api/docs`
+- Open an issue for bugs or feature requests

@@ -4,9 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev -p 3004",
-    "build": "npm run build:shared && npm run build:ui && next build",
-    "build:shared": "cd ../../packages/shared && npm run build",
-    "build:ui": "cd ../../packages/ui && npm run build",
+    "build": "next build",
     "start": "next start -p 3004",
     "lint": "next lint",
     "type-check": "tsc --noEmit",
