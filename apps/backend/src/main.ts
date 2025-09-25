@@ -11,6 +11,8 @@ async function bootstrap() {
     origin: [
       'http://localhost:3002', // Admin app
       'http://localhost:3004', // User app
+      'https://point-system-admin.vercel.app',
+      'https://point-system-user.vercel.app',
       ...(process.env.CORS_ORIGIN?.split(',') || [])
     ],
     credentials: true,
