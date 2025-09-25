@@ -198,7 +198,15 @@ NEXT_PUBLIC_APP_NAME=Point System
 
 3. **Configure Build Settings:**
 ```bash
-# Build Command: chmod +x build.sh && ./build.sh
+# Build Command: npm install && cd packages/shared && npm install && npm run build && cd ../../apps/backend && npm install && npm run build
+# Start Command: npm start
+# Environment: Node
+# Root Directory: (leave empty)
+```
+
+**Alternative Build Command:**
+```bash
+# Build Command: chmod +x build-render.sh && ./build-render.sh
 # Start Command: npm start
 # Environment: Node
 # Root Directory: (leave empty)
