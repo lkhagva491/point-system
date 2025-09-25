@@ -11,6 +11,10 @@
     "apps/user"
   ],
   "scripts": {
+    "start": "npm run start:backend",
+    "start:backend": "npm run start --workspace=@point-system/backend",
+    "start:admin": "npm run start --workspace=@point-system/admin",
+    "start:user": "npm run start --workspace=@point-system/user",
     "dev": "concurrently \"npm run dev:backend\" \"npm run dev:admin\" \"npm run dev:user\"",
     "dev:backend": "npm run dev --workspace=@point-system/backend",
     "dev:admin": "npm run dev --workspace=@point-system/admin",
