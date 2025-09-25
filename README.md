@@ -170,7 +170,7 @@ vercel login
 # Vercel Dashboard Settings:
 # Root Directory: (leave empty)
 # Build Command: npm install && cd packages/shared && npm run build && cd ../../packages/ui && npm run build && cd ../../apps/admin && npm run build
-# Output Directory: apps/admin/.next
+# Output Directory: apps/admin/.next  ← IMPORTANT: Must set this!
 # Install Command: npm install
 
 # Method 2: Build Script (May have chmod issues)
@@ -189,7 +189,7 @@ vercel login
 # Vercel Dashboard Settings:
 # Root Directory: (leave empty)
 # Build Command: npm install && cd packages/shared && npm run build && cd ../../packages/ui && npm run build && cd ../../apps/user && npm run build
-# Output Directory: apps/user/.next
+# Output Directory: apps/user/.next  ← IMPORTANT: Must set this!
 # Install Command: npm install
 
 # Method 2: Build Script (May have chmod issues)
