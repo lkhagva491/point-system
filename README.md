@@ -166,44 +166,40 @@ vercel login
 
 3. **Deploy Admin App:**
 ```bash
-# Method 1: Root Directory Deploy (Recommended)
+# Method 1: Direct Commands (Recommended)
 # Vercel Dashboard Settings:
 # Root Directory: (leave empty)
-# Build Command: npm install && npm run build:admin
+# Build Command: npm install && cd packages/shared && npm run build && cd ../../packages/ui && npm run build && cd ../../apps/admin && npm run build
 # Output Directory: apps/admin/.next
 # Install Command: npm install
 
-# Method 2: Subdirectory Deploy
-# Vercel Dashboard Settings:
+# Method 2: Build Script
+# Build Command: chmod +x build-admin.sh && ./build-admin.sh
+# Output Directory: apps/admin/.next
+
+# Method 3: Subdirectory Deploy
 # Root Directory: apps/admin
 # Build Command: npm run build
 # Output Directory: .next
-# Install Command: npm install
-
-# Method 3: Build Script
-# Build Command: chmod +x build-admin.sh && ./build-admin.sh
-# Output Directory: apps/admin/.next
 ```
 
 4. **Deploy User App:**
 ```bash
-# Method 1: Root Directory Deploy (Recommended)
+# Method 1: Direct Commands (Recommended)
 # Vercel Dashboard Settings:
 # Root Directory: (leave empty)
-# Build Command: npm install && npm run build:user
+# Build Command: npm install && cd packages/shared && npm run build && cd ../../packages/ui && npm run build && cd ../../apps/user && npm run build
 # Output Directory: apps/user/.next
 # Install Command: npm install
 
-# Method 2: Subdirectory Deploy
-# Vercel Dashboard Settings:
+# Method 2: Build Script
+# Build Command: chmod +x build-user.sh && ./build-user.sh
+# Output Directory: apps/user/.next
+
+# Method 3: Subdirectory Deploy
 # Root Directory: apps/user
 # Build Command: npm run build
 # Output Directory: .next
-# Install Command: npm install
-
-# Method 3: Build Script
-# Build Command: chmod +x build-user.sh && ./build-user.sh
-# Output Directory: apps/user/.next
 ```
 
 5. **Environment Variables (Vercel Dashboard):**
