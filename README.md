@@ -166,10 +166,10 @@ vercel login
 
 3. **Deploy Admin App:**
 ```bash
-# Method 1: Custom Build Command
+# Method 1: Simplified Build Command
 # Vercel Dashboard Settings:
 # Root Directory: (leave empty)
-# Build Command: npm install && npm run build:shared && npm run build:ui && cd apps/admin && npm run build
+# Build Command: npm install && cd apps/admin && npm run build
 # Output Directory: apps/admin/.next
 # Install Command: npm install
 
@@ -180,10 +180,10 @@ vercel login
 
 4. **Deploy User App:**
 ```bash
-# Method 1: Custom Build Command
+# Method 1: Simplified Build Command
 # Vercel Dashboard Settings:
 # Root Directory: (leave empty)
-# Build Command: npm install && npm run build:shared && npm run build:ui && cd apps/user && npm run build
+# Build Command: npm install && cd apps/user && npm run build
 # Output Directory: apps/user/.next
 # Install Command: npm install
 
