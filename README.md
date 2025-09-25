@@ -177,41 +177,48 @@ vercel
 
 4. **Environment Variables (Vercel Dashboard):**
 ```
-NEXT_PUBLIC_API_URL=https://your-backend-url.herokuapp.com
+NEXT_PUBLIC_API_URL=https://point-system-backend.onrender.com
 NEXT_PUBLIC_APP_NAME=Point System
 ```
 
-### Backend (Heroku)
+### Backend (Render - Free Alternative)
 
-1. **Install Heroku CLI:**
+1. **Create Render Account:**
 ```bash
-# Download from https://devcenter.heroku.com/articles/heroku-cli
+# Visit https://render.com
+# Sign up with GitHub
 ```
 
-2. **Login to Heroku:**
+2. **Create New Web Service:**
 ```bash
-heroku login
+# Connect your GitHub repository
+# Select "Web Service"
+# Choose your repository
 ```
 
-3. **Create Heroku App:**
+3. **Configure Build Settings:**
 ```bash
-heroku create point-system-backend
+# Build Command: npm run build
+# Start Command: npm start
+# Environment: Node
 ```
 
 4. **Set Environment Variables:**
 ```bash
-heroku config:set MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/point
-heroku config:set JWT_SECRET=your-jwt-secret
+MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/point
+JWT_SECRET=your-jwt-secret
+NODE_ENV=production
 ```
 
 5. **Deploy:**
 ```bash
-git push heroku main
+# Automatic deployment from GitHub
+# Push to main branch triggers deployment
 ```
 
 ### Production URLs
 
-- **Backend API**: https://point-system-backend.herokuapp.com
+- **Backend API**: https://point-system-backend.onrender.com
 - **Admin Dashboard**: https://point-system-admin.vercel.app
 - **User Application**: https://point-system-user.vercel.app
 

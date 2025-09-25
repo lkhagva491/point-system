@@ -5,7 +5,7 @@
   "main": "dist/main.js",
   "scripts": {
     "start": "node dist/main.js",
-    "build": "npm run build --workspace=@point-system/backend",
+    "build": "tsc",
     "postinstall": "npm run build"
   },
   "engines": {
@@ -28,5 +28,9 @@
     "class-transformer": "^0.5.1",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.8.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0"
   }
 }
