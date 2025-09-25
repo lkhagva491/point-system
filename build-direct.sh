@@ -1,12 +1,12 @@
 #!/bin/bash
 
-echo "🚀 Building Point System for Render..."
+echo "🚀 Building Point System for Render (Direct Commands)..."
 
-# Install all dependencies first
-echo "📦 Installing dependencies..."
+# Install all dependencies
+echo "📦 Installing root dependencies..."
 npm install
 
-# Build shared package first
+# Build shared package
 echo "📦 Building shared package..."
 cd packages/shared
 npm install

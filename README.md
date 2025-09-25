@@ -198,9 +198,10 @@ NEXT_PUBLIC_APP_NAME=Point System
 
 3. **Configure Build Settings:**
 ```bash
-# Build Command: npm run build
+# Build Command: chmod +x build.sh && ./build.sh
 # Start Command: npm start
 # Environment: Node
+# Root Directory: (leave empty)
 ```
 
 4. **Set Environment Variables:**
