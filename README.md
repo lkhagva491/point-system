@@ -166,14 +166,14 @@ vercel login
 
 3. **Deploy Admin App:**
 ```bash
-# Method 1: Direct Commands (Recommended)
+# ⭐ Method 1: Direct Commands (RECOMMENDED - Most Reliable)
 # Vercel Dashboard Settings:
 # Root Directory: (leave empty)
 # Build Command: npm install && cd packages/shared && npm run build && cd ../../packages/ui && npm run build && cd ../../apps/admin && npm run build
 # Output Directory: apps/admin/.next
 # Install Command: npm install
 
-# Method 2: Build Script
+# Method 2: Build Script (May have chmod issues)
 # Build Command: chmod +x build-admin.sh && ./build-admin.sh
 # Output Directory: apps/admin/.next
 
@@ -185,14 +185,14 @@ vercel login
 
 4. **Deploy User App:**
 ```bash
-# Method 1: Direct Commands (Recommended)
+# ⭐ Method 1: Direct Commands (RECOMMENDED - Most Reliable)
 # Vercel Dashboard Settings:
 # Root Directory: (leave empty)
 # Build Command: npm install && cd packages/shared && npm run build && cd ../../packages/ui && npm run build && cd ../../apps/user && npm run build
 # Output Directory: apps/user/.next
 # Install Command: npm install
 
-# Method 2: Build Script
+# Method 2: Build Script (May have chmod issues)
 # Build Command: chmod +x build-user.sh && ./build-user.sh
 # Output Directory: apps/user/.next
 
