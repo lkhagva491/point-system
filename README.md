@@ -164,20 +164,37 @@ npm i -g vercel
 vercel login
 ```
 
-3. **Deploy:**
+3. **Deploy Admin App:**
 ```bash
-# Deploy user app
-cd apps/user
-vercel
+# Method 1: Custom Build Command
+# Vercel Dashboard Settings:
+# Root Directory: (leave empty)
+# Build Command: npm install && npm run build:shared && npm run build:ui && cd apps/admin && npm run build
+# Output Directory: apps/admin/.next
+# Install Command: npm install
 
-# Deploy admin app
-cd apps/admin
-vercel
+# Method 2: Build Script
+# Build Command: chmod +x build-admin.sh && ./build-admin.sh
+# Output Directory: apps/admin/.next
 ```
 
-4. **Environment Variables (Vercel Dashboard):**
+4. **Deploy User App:**
+```bash
+# Method 1: Custom Build Command
+# Vercel Dashboard Settings:
+# Root Directory: (leave empty)
+# Build Command: npm install && npm run build:shared && npm run build:ui && cd apps/user && npm run build
+# Output Directory: apps/user/.next
+# Install Command: npm install
+
+# Method 2: Build Script
+# Build Command: chmod +x build-user.sh && ./build-user.sh
+# Output Directory: apps/user/.next
 ```
-NEXT_PUBLIC_API_URL=https://point-system-backend.onrender.com
+
+5. **Environment Variables (Vercel Dashboard):**
+```
+NEXT_PUBLIC_API_URL=https://point-system-1oqw.onrender.com
 NEXT_PUBLIC_APP_NAME=Point System
 ```
 
